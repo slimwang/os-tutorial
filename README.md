@@ -1,5 +1,12 @@
-os-tutorial
+os-tutorial 如何从零编写一个计算机操作系统
 ===========
+
+这是一个从最近火起来的[os-tutorial](https://github.com/cfenollosa/os-tutorial/commits/master)Fork出来的仓库
+
+- 这并不仅仅是官方文档的中文翻译
+- 还包括了在实践过程中可能遇到的坑与解决办法
+- 以及其他解决问题的过程中应用的技巧
+
 
 How to create an OS from scratch!
 
