@@ -1,3 +1,12 @@
+>计算机启动时，需要通过`引导扇区`来引导系统的启动，这里编写的就是引导区的代码（写的是一个死循环）．
+
+> 官方文档列出的命令在执行的过程中会遇到很多问题，比如：
+>- 将 asm 文件编译为 bin 文件，执行的命令应该是`nasm boot_sect_simple.asm -o boot_sect_simple.bin`（大概是因为Mac下的nasm接受参数的方式与其他操作系统下的不一样）．
+>- 同样，当你启动系统时，所需要执行的命令应为`qemu-system-i386 -drive format=raw,file=boot_sect_simple.bin`通过 drive 来传入文件格式和文件名参数
+>- 文章结尾提到，在完成引导后，会有新窗口弹出，然而并没有，这时需要手动进行 VNC 连接`vncviewer 127.0.0.1`（ qemu 启动的是一个vnc服务器，连接时可以省略端口号 5900）
+
+> 最终会看到个显示`Booting from Hard Disk...`的命令行
+
 *Concepts you may want to Google beforehand: assembler, BIOS*
 
 **Goal: Create a file which the BIOS interprets as a bootable disk**
@@ -6,14 +15,6 @@ This is very exciting, we're going to create our own boot sector!
 
 Theory
 ------
->计算机启动时，需要通过`引导扇区`来引导系统的启动，这里编写的就是引导区的代码（写的是一个死循环）．
-
-> 官方文档列出的命令在执行的过程中会遇到很多问题，比如：
-- 将 asm 文件编译为 bin 文件，执行的命令应该是`nasm boot_sect_simple.asm -o boot_sect_simple.bin`（大概是因为Mac下的nasm接受参数的方式与其他操作系统下的不一样）．
-- 同样，当你启动系统时，所需要执行的命令应为`qemu-system-i386 -drive format=raw,file=boot_sect_simple.bin`通过 drive 来传入文件格式和文件名参数
-- 文章结尾提到，在完成引导后，会有新窗口弹出，然而并没有，这时需要手动进行 VNC 连接`vncviewer 127.0.0.1`（ qemu 启动的是一个vnc服务器，连接时可以省略端口号 5900）
-
-> 最终会看到个显示`Booting from Hard Disk...`的命令行
 
 When the computer boots, the BIOS doesn't know how to load the OS, so it
 delegates that task to the boot sector. Thus, the boot sector must be
