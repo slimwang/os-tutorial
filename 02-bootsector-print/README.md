@@ -1,3 +1,5 @@
+> 这一节是关于在屏幕上打印文本信息的，也是正式开始编写功能性的汇编代码，很多人一看到汇编就感到头疼，事实上，汇编的英文是`assembler`，而`assemble`有动词`装配　组合`的意思，汇编语言的提出是为了解决人类难以阅读二进制机器码的问题的，它的本质是助记符，通过将一大段机器指令标记为MOV ADD等字符，来对底层语言进行一次抽象，这样人们就可以通过将这些标记进行`组合`来编写程序，提高了开发效率和程序的可读性，并降低了Bug出现的几率
+
 *Concepts you may want to Google beforehand: interrupts, CPU
 registers*
 
@@ -14,7 +16,7 @@ is a general interrupt for video services.
 `0x0e` on `ah` tells the video interrupt that the actual function
 we want to run is to 'write the contents of `al` in tty mode'.
 
-We will set tty mode only once though in the real world we 
+We will set tty mode only once though in the real world we
 cannot be sure that the contents of `ah` are constant. Some other
 process may run on the CPU while we are sleeping, not clean
 up properly and leave garbage data on `ah`.
@@ -39,7 +41,7 @@ jmp $ ; jump to current address = infinite loop
 
 ; padding and magic number
 times 510 - ($-$$) db 0
-dw 0xaa55 
+dw 0xaa55
 ```
 
 You can examine the binary data with `xxd file.bin`
